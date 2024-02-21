@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IniciarSesion</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/login.css" />
+    
+</head>
+    <body class="bg-image">
+        <main style="min-height: 100vh; min-width: 30vh; display: flex; align-items: center;">
+            <div class="container ">
+                <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-12 p-5 shadow-lg Redondeo" style="background-color: rgba(255, 255, 255, 0.55); border: 3px solid #003366a9;">
+                        <div class="text-center mb-4">
+                            <img src="~/Images/ENGINIE-1.svg" alt="Logo" class="img-fluid ">
+                        </div>
+                        <h5 class="text-center mb-4">Iniciar Sesión</h5>
+                            <form asp-controller="Inicio" asp-action="IniciarSesion" method="post">
+                                <div class="mb-3">
+                                    <i class="fa-regular fa-user" style="font-size: 1.25rem;"></i>
+                                    <label for="email" class="fw-bold form-label">Correo Electrónico:</label>
+                            <input type="text" class="form-control border border-dark Redondeo-input" id="email" placeholder="Correo" required name="correo">
+                                </div>
+                                <div class="mb-3">
+                                    <i class="fa-solid fa-key " style="font-size: 1.25rem;"></i>
+                                    <label for="password" class="fw-bold  form-label">Contraseña:</label>
+                                    @*<input class="form-control mb-3" type="password" placeholder="Contraseña" required name="clave" />*@
+                                    <input type="password" class="form-control border border-dark Redondeo-input" id="password" placeholder="Contraseña" required name="clave">
+                                </div>
+                                <div class="text-center">
+                                    <input type="submit" class="btn fw-bold col-sm-12 col-md-6 Redondeo-input" value="Iniciar Sesión"></input>
+                                </div>
+                                @if (ViewData["Mensaje"] != null)
+                                {
+                                    <div class="form-group mt-3 text-center">
+                                    <div class="alert alert-info" role="alert">
+                                    @ViewData["Mensaje"]
+                                    </div>
+                                    </div>
+                                }
+                                <div class="text-center mb-4 mt-3">
+                                    <a href="#!"><b>¿Olvidaste la contraseña?</b></a>
+                                </div>
+                                <div class="text-center ">
+                                    <a href="#!" class="small ">Términos de uso</a>
+                                    <span class="mx-2 text-muted">|</span>
+                                    <a href="#!" class="small ">Política de privacidad</a>
+                                </div>
+                            </form>
+                            ¿No tienes una cuenta? <a href="@Url.Action("Registrarse","Inicio")"> Registraste!</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
